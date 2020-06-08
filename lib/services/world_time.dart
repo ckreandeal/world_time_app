@@ -7,6 +7,7 @@ class WorldTime {
   String time;
   String flag;
   String url;
+  bool isDayyTime;
 
   WorldTime ({
     this.location, 
@@ -26,6 +27,8 @@ class WorldTime {
       DateTime now = DateTime.parse(dateTime);
       now = now.add(Duration(hours: int.parse(offset)));
 
+      isDayyTime = now.hour > 6 && now.hour < 20 ? true : false;
+
       time = DateFormat.jm().format(now);
 
     }
@@ -34,6 +37,8 @@ class WorldTime {
       print('YOU HAVE ERROR $e');
       time  = 'No Data';
     }
+
+
 
     
   }
